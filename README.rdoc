@@ -1,6 +1,6 @@
 = pgmodelgen
 
-Description goes here.
+Rake task that generates/updates activerecord models based on current schema in the postgresql DB.
 
 == Contributing to pgmodelgen
  
