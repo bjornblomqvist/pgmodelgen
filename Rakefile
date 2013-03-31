@@ -17,30 +17,14 @@ Jeweler::Tasks.new do |gem|
   gem.name = "pgmodelgen"
   gem.homepage = "http://github.com/bjornblomqvist/pgmodelgen"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "darwin.git@marianna.se"
-  gem.authors = ["Darwin"]
+  gem.summary = %Q{Rake task that generates/updates activerecord models based on current schema in the postgresql DB}
+  gem.description = %Q{Rake task that generates/updates activerecord models based on current schema in the postgresql DB}
+  gem.email = "darwin@bits2life.com"
+  gem.authors = ["Bjorn Blomqvist"]
+  gem.files = FileList['lib/**/*.rb','lib/**/*.rake'].to_a
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
-
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-end
-
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
-end
-
-task :default => :test
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
