@@ -1,0 +1,11 @@
+
+  - Seperate the project into metadata part and model writer
+    - Write a metadata extractor
+      - Schemas
+        - tables
+          - columns
+            - name
+            - type
+            - default value
+            - constraints
+          - indexs
