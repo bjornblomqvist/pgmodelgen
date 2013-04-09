@@ -104,7 +104,7 @@ select
   where (relkind = 'r') and pg_namespace.nspname = 'public' and pg_class.relname = 'dummy_table_name' ").and_return(mock(:to_a => [{'table_oid' => oid}]))
   
       
-      me.oid('public','dummy_table_name').should == oid
+      me.send(:oid,'public','dummy_table_name').should == oid
       
     end
     

@@ -36,6 +36,15 @@ class MetadataExtractor
     {:oid => oid(schema_name, table_name), :columns => columns(schema_name, table_name)}
   end
   
+  def oid(schema_name, table_name)
+    @db_connection.query("
+select
+  pg_class.oid as table_oid
+  from pg_class
+  join pg_namespace on pg_namespace.oid = pg_class.relnamespace
+  where (relkind = 'r') and pg_namespace.nspname = '#{schema_name}' and pg_class.relname = '#{table_name}' ").to_a.map{|row| row['table_oid'] }.first
+  end
+  
   def table_names(schema_name)
     @db_connection.query("
 select
