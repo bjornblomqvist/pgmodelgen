@@ -188,7 +188,7 @@ class PGGen
 
       FileUtils.makedirs(File.dirname(model_file_name))
 
-      value[:set] = "\tset_table_name \"#{key}\"\n" + value[:set].to_s
+      value[:set] = "\tself.table_name = \"#{key}\"\n" + value[:set].to_s
 
       first_part = "# encoding: utf-8\n\n"
       first_part += "class #{get_class_name_with_namespace(class_name)} < ActiveRecord::Base \n"
@@ -516,8 +516,8 @@ class PGGen
           columns = row['attribute_column_numbers'].gsub("{","").gsub("}","").split(',');
           match = get_default_value_src(columns.first,table_oid,connection).to_s.match("\'([a-zA-Z_]*)\'");
 
-          models[table_name][:set] += "\tset_primary_key \"#{get_attribute_name(columns.first,table_oid,connection)}\"\n"
-          models[table_name][:set] += "\tset_sequence_name \"#{match[1]}\"\n" if match
+          models[table_name][:set] += "\tself.primary_key = \"#{get_attribute_name(columns.first,table_oid,connection)}\"\n"
+          models[table_name][:set] += "\tself.sequence_name = \"#{match[1]}\"\n" if match
         end
       end
 
