@@ -737,6 +737,17 @@ class PGGen
         models[table_name][:constraint] += "\tvalidates_numericality_of :#{row['attribute_name']}, :only_integer => true #{allow_nil} \n"
       end
     end
+    
+    #
+    # Add float4 constraint
+    #
+    models[table_name][:constraint] += "\n"
+    result.each do |row|
+      if row['type_name'].include? "float4" 
+        allow_nil = ((row['not_null_constraint'] != 't' or row['has_default_value'] == 't') ? ",:allow_nil => true" : "")
+        models[table_name][:constraint] += "\tvalidates_numericality_of :#{row['attribute_name']} #{allow_nil} \n"
+      end
+    end
 
   end
   
