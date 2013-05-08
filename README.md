@@ -22,7 +22,7 @@ Generating for: my_db.public with prefix
 
 The resulting models
 
-## user.rb
+### user.rb
 
 ```ruby
 # encoding: utf-8
@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
 end
 ```
 
-## account.rb
+### account.rb
 
 ```ruby
 # encoding: utf-8
@@ -116,7 +116,7 @@ end
 ```
 
 
-# Contributing to pgmodelgen
+## Contributing to pgmodelgen
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Fork the project.
@@ -125,7 +125,7 @@ end
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history.
 
-# Copyright
+## Copyright
 
 Copyright (c) 2013 Darwin. See LICENSE.txt for
 further details.
