@@ -2,9 +2,13 @@
 
 Rake task that generates/updates activerecord models based on current schema in a postgresql DB.
 
-```bash
+```
 rake db:gen_model
+```
 
+output
+
+```
 Generating for: my_db.public with prefix 
 
 	Creating models for these tables
@@ -15,6 +19,8 @@ Generating for: my_db.public with prefix
 	Writing to ./app/models//account.rb
 
 ```
+
+The resulting models
 
 ## user.rb
 
@@ -110,17 +116,16 @@ end
 ```
 
 
-== Contributing to pgmodelgen
+# Contributing to pgmodelgen
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.
-* Start a feature/bugfix branch.
+* _Start a feature/bugfix branch_.
 * Commit and push until you are happy with your contribution.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+* Please try not to mess with the Rakefile, version, or history.
 
-== Copyright
+# Copyright
 
 Copyright (c) 2013 Darwin. See LICENSE.txt for
 further details.
