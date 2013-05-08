@@ -1,4 +1,4 @@
-= pgmodelgen
+# pgmodelgen
 
 Rake task that generates/updates activerecord models based on current schema in a postgresql DB.
 
