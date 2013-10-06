@@ -59,7 +59,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
-  git (= 1.2.5)
+  git (~> 1.2.5)
   jeweler
   pg
   rspec
