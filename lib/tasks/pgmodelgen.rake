@@ -747,40 +747,35 @@ class PGGen
   
 end
 
+def handle_arguments(args)
+  args = args.to_hash
+  
+  if args[:dbname].blank?
+    args[:dbname] = ActiveRecord::Base.connection.current_database
+  end
+  
+  args[:schema_name] = ActiveRecord::Base.connection.current_schema || 'public' if args[:schema_name].nil? || args[:schema_name].blank?
+  
+  schema_name = args[:schema_name]
+  dbname = args[:dbname]
+  prefix = (args[:prefix]||'').capitalize
+  
+  return schema_name, dbname, prefix
+end
+
 
 namespace :db do
 
   desc 'Generates/updates activerecord models based on current schema in the postgresql db'
   task :gen_models => :environment do |t,args|
-    
-    args = args.to_hash
-    
-    if args[:dbname].blank?
-      args[:dbname] = ActiveRecord::Base.connection.current_database
-    end
-    
-    args[:schema_name] = 'public' if args[:schema_name].nil? || args[:schema_name].empty?
-    
-    schema_name = args[:schema_name]
-    dbname = args[:dbname]
-    prefix = (args[:prefix]||'').capitalize
+    schema_name, dbname, prefix = handle_arguments(args)
     
     PGGen.new(prefix,schema_name,dbname)
   end
   
   desc 'Generates/updates activerecord models based on current schema in the postgresql db for tables matching the supplied regex'
   task :gen_matching_models,[:regex] => [:environment] do |t,args|
-    args = args.to_hash
-    
-    if args[:dbname].blank?
-      args[:dbname] = ActiveRecord::Base.connection.current_database
-    end
-    
-    args[:schema_name] = 'public' if args[:schema_name].nil? || args[:schema_name].empty?
-    
-    schema_name = args[:schema_name]
-    dbname = args[:dbname]
-    prefix = (args[:prefix]||'').capitalize
+    schema_name, dbname, prefix = handle_arguments(args)
     
     PGGen.new(prefix,schema_name,dbname,args[:regex])
   end
