@@ -16,7 +16,7 @@ Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "pgmodelgen"
   gem.homepage = "http://github.com/bjornblomqvist/pgmodelgen"
-  gem.license = "MIT"
+  gem.license = "LGPL"
   gem.summary = %Q{Rake task that generates/updates activerecord models based on current schema in the postgresql DB}
   gem.description = %Q{Rake task that generates/updates activerecord models based on current schema in the postgresql DB}
   gem.email = "darwin@bits2life.com"
