@@ -599,8 +599,8 @@ class PGGen
             
             # Regex check constraint
             match = row['condition_decleration_src'].match('\)::text ~\* \'(.*)\'::text\)$')
-            regex_ruby_style = match[1].gsub('\\\\.','').gsub('/','\/').gsub(/^\^/,"\A").gsub(/\$$/,"\z")
-            models[table_name][:constraint] += "\tvalidates_format_of :#{column_rows.first["attribute_name"]}, :with => /#{regex_ruby_style}/i#{allow_nil}\n, "
+            regex_ruby_style = match[1].gsub('\\\\.','').gsub('/','\/').gsub(/^\^/,"\\A").gsub(/\$$/,"\\z")
+            models[table_name][:constraint] += "\tvalidates_format_of :#{column_rows.first["attribute_name"]}, :with => /#{regex_ruby_style}/i#{allow_nil}\n"
             
           elsif row['condition_decleration_src'].match(/\(char_length\((.*)::text\) >= ([0-9]*)\)/)
             
