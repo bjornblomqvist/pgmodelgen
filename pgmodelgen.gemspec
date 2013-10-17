@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "pgmodelgen"
-  s.version = "0.4.9"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bjorn Blomqvist"]
-  s.date = "2013-10-06"
+  s.date = "2013-10-17"
   s.description = "Rake task that generates/updates activerecord models based on current schema in the postgresql DB"
   s.email = "darwin@bits2life.com"
   s.extra_rdoc_files = [
