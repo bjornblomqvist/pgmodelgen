@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "pgmodelgen"
-  s.version = "0.5.0"
+  s.version = "0.5.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bjorn Blomqvist"]
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
     "lib/tasks/pgmodelgen.rake"
   ]
   s.homepage = "http://github.com/bjornblomqvist/pgmodelgen"
-  s.licenses = ["MIT"]
+  s.licenses = ["LGPL"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.0.6"
   s.summary = "Rake task that generates/updates activerecord models based on current schema in the postgresql DB"
