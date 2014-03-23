@@ -678,7 +678,7 @@ class PGGen
     		pg_attribute.attrelid = #{oid}
     		and pg_attribute.attnum > 0
     	
-    	order by attribute_name;
+    	order by attribute_number;
     "
 
     columns_buffer = ""
