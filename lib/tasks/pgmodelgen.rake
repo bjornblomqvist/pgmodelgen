@@ -12,6 +12,7 @@
 # TODO Update so that a unique constraint on a foreign key changes the has_many to has_one
 # TODO Add hint where a foregin key is to a many to many table
 
+# DONE Add interval syntax validation (Added basic validation. Can only handle HH:MM:SS)
 # DONE Add warning about missing index on foreign keys
 # DONE Fix foreign_key mistake
 # DONE Make the result a bit nicer
@@ -733,15 +734,21 @@ class PGGen
     #
     models[table_name][:constraint] += "\n"
     result.each do |row|
-      if row['type_name'].include? "int" 
-        allow_nil = ((row['not_null_constraint'] != 't' or row['has_default_value'] == 't') ? ",:allow_nil => true" : "")
-        models[table_name][:constraint] += "\tvalidates_numericality_of :#{row['attribute_name']}, :only_integer => true #{allow_nil} \n"
+      column_name = row['attribute_name']
+      allow_nil = ((row['not_null_constraint'] != 't' or row['has_default_value'] == 't') ? ",:allow_nil => true" : "")
+      
+      constraint = case row['type_name']
+        when /^(int2|int4|int8)$/
+          "validates_numericality_of :#{column_name}, :only_integer => true"
+        when /^(float4|float8)$/
+          "validates_numericality_of :#{column_name}"
+        when /^interval$/
+          "validates_format_of :#{column_name}, :with => /^\d+:\d{1,2}(:\d{1,2}|)$/"
+        else
+          nil
       end
       
-      if row['type_name'].include? "float" 
-        allow_nil = ((row['not_null_constraint'] != 't' or row['has_default_value'] == 't') ? ",:allow_nil => true" : "")
-        models[table_name][:constraint] += "\tvalidates_numericality_of :#{row['attribute_name']} #{allow_nil} \n"
-      end
+      models[table_name][:constraint] += "\t#{constraint} #{allow_nil} \n" if constraint
     end
 
   end
