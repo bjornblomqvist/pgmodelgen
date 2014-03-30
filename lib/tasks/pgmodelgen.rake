@@ -743,7 +743,7 @@ class PGGen
         when /^(float4|float8)$/
           "validates_numericality_of :#{column_name}"
         when /^interval$/
-          "validates_format_of :#{column_name}, :with => /^\d+:\d{1,2}(:\d{1,2}|)$/"
+          "validates_format_of :#{column_name}, :with => /\\A(\\d+:\\d{1,2}(:\\d{1,2}|)|\\d+)\\z/"
         else
           nil
       end
