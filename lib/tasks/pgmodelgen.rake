@@ -614,6 +614,12 @@ class PGGen
             # Length constraint
             match = row['condition_decleration_src'].match(/^\(char_length\(\((.*)\)::text\) >= ([0-9]*)\)$/)
             models[table_name][:constraint] += "\tvalidates_length_of :#{match[1]}, :minimum => #{match[2]}\n"
+          
+          elsif row['condition_decleration_src'].match(/^\((.*) > ([0-9]*)\)$/)
+            
+            # Number constraint
+            match = row['condition_decleration_src'].match(/^\((.*) > ([0-9]*)\)$/)
+            models[table_name][:constraint] += "\tvalidates_numericality_of :#{match[1]}, :greater_than => #{match[2]}\n"
             
           else
             
