@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Bjorn Blomqvist"]
-  s.date = "2014-03-23"
+  s.date = "2014-03-30"
   s.description = "Rake task that generates/updates activerecord models based on current schema in the postgresql DB"
   s.email = "darwin@bits2life.com"
   s.extra_rdoc_files = [
